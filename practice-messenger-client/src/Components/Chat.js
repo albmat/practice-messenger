@@ -1,32 +1,34 @@
-import React from "react";
-import UseChat from "./UseChat";
-
+import React from 'react';
+import UseChat from './UseChat';
+const { ChatContainer, ListContainer, MessageContainer } = require('./styles');
 const Chat = () => {
-  const [newMessage, setNewMessage] = React.useState("");
+  const [newMessage, setNewMessage] = React.useState('');
   const { messages, sendMessage } = UseChat();
   const handleChange = (event) => {
     setNewMessage(event.target.value);
   };
   const handleClick = () => {
     sendMessage(newMessage);
-    setNewMessage("");
+    setNewMessage('');
   };
   return (
-    <div>
-      <ul>
+    <ChatContainer>
+      <ListContainer>
         {messages.map((message, index) => {
-          return <li key={index}>{message.body}</li>;
+          return (
+            <MessageContainer key={index}>{message.body}</MessageContainer>
+          );
         })}
-      </ul>
+      </ListContainer>
       <textarea
         value={newMessage}
-        placeholder="write message"
+        placeholder='write message'
         onChange={handleChange}
       ></textarea>
-      <button type="submit" onClick={handleClick}>
+      <button type='submit' onClick={handleClick}>
         Send
       </button>
-    </div>
+    </ChatContainer>
   );
 };
 
