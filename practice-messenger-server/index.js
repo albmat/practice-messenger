@@ -12,3 +12,7 @@ io.on("connection", (socket) => {
     socket.leave();
   });
 });
+
+server.listen(PORT, () => {
+  console.log(`server listening on ${PORT}`);
+});
