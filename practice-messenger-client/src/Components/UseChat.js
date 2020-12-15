@@ -9,6 +9,7 @@ const UseChat = () => {
   useEffect(() => {
     socketRef.current = socketIoClient(serverUrl, {
       transports: ["websocket"],
+      query: 1,
     });
     socketRef.current.on(chatEvent, (message) => {
       const incomingMessage = {

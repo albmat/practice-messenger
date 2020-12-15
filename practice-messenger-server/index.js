@@ -4,12 +4,12 @@ const PORT = 9090;
 const chatEvent = "newChatMessage";
 
 io.on("connection", (socket) => {
-  socket.join();
+  socket.join(1);
   socket.on(chatEvent, (data) => {
-    io.in().emit(chatEvent, data);
+    io.in(1).emit(chatEvent, data);
   });
   socket.on("disconnect", () => {
-    socket.leave();
+    socket.leave(1);
   });
 });
 
